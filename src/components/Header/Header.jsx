@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 function Header () {
     const authStatus = useSelector((state) => {
-        state.auth.status
-    })
+        return state.auth.status
+    });
     const navigate = useNavigate()
 
     const navItems = [
@@ -46,7 +46,7 @@ function Header () {
                             <Logo width='90px' />
                         </Link>
                     </div>
-                    <ul className="flex ml-auto">
+                    <ul className="flex ml-auto text-2xl">
                         {navItems.map((item) => 
                             item.active ? (
                             <li key={item.name}>
@@ -56,12 +56,12 @@ function Header () {
                                 </button>
                             </li>) : null
                         )}
+                        {authStatus && (
+                            <li>
+                                <LogoutBtn />
+                            </li>
+                        )}
                     </ul>
-                    {authStatus && (
-                        <li>
-                            <LogoutBtn />
-                        </li>
-                    )}
                 </nav>
             </Container>
         </header>

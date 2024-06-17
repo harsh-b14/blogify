@@ -36,9 +36,11 @@ export class AuthService {
 
     async getCurrUser(){
         try {
-            return await this.account.get();
+            const user = await this.account.get();
+            if(user) return user;
+            return null;
         } catch (error) {
-            throw error;
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
         return null;
     }
@@ -54,4 +56,4 @@ export class AuthService {
 
 const authService = new AuthService();
 
-export default authService
+export default authService;

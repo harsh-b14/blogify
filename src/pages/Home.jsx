@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import service from "../appwrite/conf";
 import { Container, PostCard } from "../components";
+import authService from "../appwrite/auth";
 
 function Home() {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         service.getPosts().then((posts) => {
@@ -11,14 +13,16 @@ function Home() {
                 setPosts(posts.documents)
             }
         })
+        const user = authService.getCurrUser();
+        setUser(user);
     }, [])
 
-    if(posts.length === 0){
+    if(!posts){
         return(
             <div className="w-full py-8 mt-4 text-center">
                 <Container>
                     <div className="flex flex-wrap">
-                        <h1 className="text-2xl font-bold hover:text-gray-500">
+                        <h1 className="text-4xl font-bold hover:text-gray-500">
                             Login to read posts
                         </h1>
                     </div>

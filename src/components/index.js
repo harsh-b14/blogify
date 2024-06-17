@@ -8,7 +8,7 @@ import Select from "./Select";
 import Input from "./Input";
 import Button from './Button'
 import RTE from "./RTE";
-import SignUp from "./Signup";
+import Signup from "./Signup";
 import Login from "./Login";
 import PostForm from "./post-form/PostForm";
 import Protected from "./AuthLayout";
@@ -24,7 +24,7 @@ export {
     Input,
     Button,
     RTE,
-    SignUp,
+    Signup,
     Login,
     PostForm,
     Protected
